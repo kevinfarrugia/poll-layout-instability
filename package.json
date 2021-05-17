@@ -1,0 +1,18 @@
+{
+  "name": "poll-layout-instability",
+  "version": "1.0.0",
+  "description": "The scope of this demo is to illustrate the problem with layout shifting caused by appending DOM elements above the current viewport.",
+  "main": "index.html",
+  "scripts": {
+    "build": "postcss tailwind.css -o style.css"
+  },
+  "author": "Kevin Farrugia",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.15",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.1.2"
+  }
+}

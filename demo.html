@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Polling Layout Instability</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div
+      style="
+        height: 100vh;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        background-color: #333;
+      "
+    >
+      <div
+        id="content"
+        style="width: 320px; height: 568px"
+        class="bg-gray-50 rounded overflow-y-scroll mx-auto"
+      >
+        <ul id="list" class="mx-auto max-w-sm p-4 space-y-4">
+          <li>
+            <figure class="bg-gray-200 rounded-xl p-4 shadow-md">
+              <img
+                class="w-24 h-24 rounded-full mx-auto"
+                src="/img/0.jpg"
+                alt=""
+                width="384"
+                height="512"
+              />
+              <div class="pt-3 text-center space-y-2 w-full">
+                <blockquote>
+                  <p class="text-md font-semibold">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Modi deserunt, molestiae quidem a, quis aspernatur nobis.
+                  </p>
+                </blockquote>
+                <figcaption class="font-medium">
+                  <div class="text-cyan-600">John Doe</div>
+                  <div class="text-gray-500">Sofware Engineer, Example.com</div>
+                </figcaption>
+              </div>
+            </figure>
+          </li>
+        </ul>
+      </div>
+      <div style="height: 568px">
+        <div
+          id="clone"
+          style="width: 320px; height: 568px; padding-top: 568px"
+          class="overflow-hidden m-auto filter blur"
+        ></div>
+      </div>
+    </div>
+    <script>
+      const INTERVAL = 4000;
+      const LOREM_IPSUM =
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi deserunt, molestiae quidem a, quis aspernatur nobis.";
+
+      // HTML template to generate user cards
+      const template = ({ image, text }) => `
+        <li>
+          <figure class="bg-gray-100 rounded-xl p-4 shadow-md">
+            <img
+              class="
+                w-24
+                h-24
+                rounded-full
+                mx-auto
+              "
+              src="/img/${image}.jpg"
+              alt=""
+              width="384"
+              height="512"
+            />
+            <div class="pt-3 text-center space-y-2 w-full">
+              <blockquote>
+                <p class="text-md font-semibold">
+                  ${text}
+                </p>
+              </blockquote>
+              <figcaption class="font-medium">
+                <div class="text-cyan-600">John Doe</div>
+                <div class="text-gray-500">Sofware Engineer, Example.com</div>
+              </figcaption>
+            </div>
+          </figure>
+        </li>`;
+
+      // mimicks polling for data from an API
+      setInterval(() => {
+        const randomImage = Math.ceil(Math.random() * 8);
+        const text = LOREM_IPSUM.slice(Math.ceil(Math.random() * 100));
+
+        document.getElementById("list").insertAdjacentHTML(
+          "afterbegin",
+          template({
+            image: randomImage,
+            text: text,
+          })
+        );
+
+        // used for scroll effect for demo
+        document.getElementById("clone").innerHTML =
+          document.getElementById("content").innerHTML;
+      }, INTERVAL);
+    </script>
+    <script>
+      document.getElementById("clone").innerHTML =
+        document.getElementById("content").innerHTML;
+
+      // script is only used to create scroll effect for demo purposes
+      (document.getElementById("content").onscroll = (e) => {
+        clone.scrollTop = e.target.scrollTop;
+      }),
+        { passive: true };
+    </script>
+  </body>
+</html>
