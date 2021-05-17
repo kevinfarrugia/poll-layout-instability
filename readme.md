@@ -31,6 +31,8 @@ While this may be fairly understandable and perhaps even expected; this issue ma
 
 ## Demo
 
+Demos are best viewed on a desktop browser.
+
 - [Demo - insertAdjacentHTML](https://kevinfarrugia.github.io/poll-layout-instability/)
 - [Demo - insertAdjacentHTML w/ animations](https://kevinfarrugia.github.io/poll-layout-instability/demo)
 - [Demo - innerHTML w/ animations](https://kevinfarrugia.github.io/poll-layout-instability/demo-inner-html)
