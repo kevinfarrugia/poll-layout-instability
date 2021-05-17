@@ -4,6 +4,8 @@ The scope of this demo is to illustrate the problem with layout shifting caused 
 
 For example, if you have a list of Tweets which is being updated in real time sorted by most recent on top. The new elements will be added to the top and the user will experience jumping, equal to the height of the new element.
 
+https://user-images.githubusercontent.com/8075326/118517075-3417ee80-b737-11eb-8aa8-4ec75e6d73ce.mp4
+
 ## Conclusion
 
 When using `insertAdjacentHTML`, the layout would only shift when the newly added element would appear within the viewport. If the newly added element would be outside of the viewport, then no jumping is experienced.
