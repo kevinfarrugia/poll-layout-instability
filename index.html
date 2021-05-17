@@ -41,7 +41,7 @@
       // HTML template to generate user cards
       const template = ({ image, text }) => `
         <li>
-          <figure class="bg-gray-100 rounded-xl p-4 shadow-md">
+          <figure id="new" class="bg-gray-100 rounded-xl p-4 shadow-md transition duration-1000 ease-in-out bg-blue-300">
             <img
               class="
                 w-24
@@ -80,6 +80,15 @@
             text: text,
           })
         );
+
+        // animate new item
+        setTimeout(() => {
+          const newElements = document.querySelectorAll(".new");
+          newElements.forEach((n) => {
+            n.classList.remove("bg-blue-300");
+            n.classList.remove("new");
+          });
+        });
       }, INTERVAL);
     </script>
   </body>

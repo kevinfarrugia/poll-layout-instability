@@ -96,13 +96,10 @@
         const randomImage = Math.ceil(Math.random() * 8);
         const text = LOREM_IPSUM.slice(Math.ceil(Math.random() * 100));
 
-        document.getElementById("list").insertAdjacentHTML(
-          "afterbegin",
-          template({
-            image: randomImage,
-            text: text,
-          })
-        );
+        document.getElementById("list").innerHTML = `${template({
+          image: randomImage,
+          text: text,
+        })}${document.getElementById("list").innerHTML}`;
 
         // animate new item
         setTimeout(() => {
