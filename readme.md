@@ -31,6 +31,21 @@ document.getElementById("list").innerHTML = `${template({
 
 While this may be fairly understandable and perhaps even expected; this issue may be experienced when using ReactJS or other frameworks/packages which abstract away the inner implementations of how elements are added to the DOM.
 
+## Workaround
+
+The [workaround](https://kevinfarrugia.github.io/poll-layout-instability/demo-workaround) implemented calculates the increase in `offsetHeight` and adds it to the `scrollTop` of the container.
+
+```
+const oldScrollTop = document.getElementById("content").scrollTop;
+const oldHeight = document.getElementById("list").offsetHeight;
+
+// update list
+
+const newHeight = document.getElementById("list").offsetHeight;
+document.getElementById("content").scrollTop =
+  oldScrollTop + newHeight - oldHeight;
+```
+
 ## Demo
 
 Demos are best viewed on a desktop browser.
@@ -38,6 +53,7 @@ Demos are best viewed on a desktop browser.
 - [Demo - insertAdjacentHTML](https://kevinfarrugia.github.io/poll-layout-instability/)
 - [Demo - insertAdjacentHTML w/ animations](https://kevinfarrugia.github.io/poll-layout-instability/demo)
 - [Demo - innerHTML w/ animations](https://kevinfarrugia.github.io/poll-layout-instability/demo-inner-html)
+- [Demo - workaround](https://kevinfarrugia.github.io/poll-layout-instability/demo-workaround)
 
 ## Copyright
 
